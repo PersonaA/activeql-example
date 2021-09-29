@@ -12,6 +12,22 @@ entity:
       brand: CarBrand!
       color: String
       mileage: Int
+    permissions:
+      admin:
+        read: true
+        create: true
+        update: true
+        delete: true
+      user:
+        read: true
+        create: false
+        update: false
+        delete: false
+      manager:
+        read: true
+        create: false
+        update: true
+        delete: false
     seeds:
       50:
         licence:
