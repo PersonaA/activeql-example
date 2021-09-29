@@ -34,8 +34,7 @@ const login = async (runtime:Runtime, username:string, password:string) => {
 
 const findUser = async ( runtime:Runtime, username:string ) => {
   const entity = runtime.entity('User')
-  const user = await entity.findOneByAttribute( { username } );
-  return user ? user.item : undefined;
+  return await entity.findOneByAttribute( { username } );
 }
 
 const addPrincipalToApolloContext = (expressContext:{req:express.Request}, apolloContext:any) => {
