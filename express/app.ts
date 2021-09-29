@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 4000;
 
 (async () => {
   const app = express();
+  // @ts-ignore
   app.use('*', cors());
   app.use(compression());
   app.set('port', PORT );
