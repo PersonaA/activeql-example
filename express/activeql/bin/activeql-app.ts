@@ -1,4 +1,4 @@
-import { DomainDefinition, MongoDbDataStore, ActiveQLServer, Runtime, PuGenerator } from 'activeql-server';
+import { DomainDefinition, MongoDbDataStore, ActiveQLServer, PlantUMLGenerator, Runtime, TypesGenerator } from 'activeql-server';
 import path from 'path';
 import express from 'express';
 
@@ -40,5 +40,9 @@ export const activeqlSeeed = async (truncate:boolean) => {
   return runtime.seed( truncate );
 }
 
-export const activeqlUml = () => new PuGenerator( domainDefinition.getResolvedConfiguration() ).generate();
+export const activeqlUml = () => new PlantUMLGenerator(domainDefinition.getResolvedConfiguration()).generate();
+export const activeqlTypes = async () => {
+  const runtime = await Runtime.create({ domainDefinition, /* dataStore */ });
+  return new TypesGenerator(runtime).generate();
+};
 
